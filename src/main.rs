@@ -1,7 +1,7 @@
 fn main() {
-    let hello = "Здравствуйте";
+    let hello = "123";
 
-    let s = &hello[0..2];
+    let s = &hello[0..1];
     //let s = &hello[0..1]; error
     println!("{}",s);
 
