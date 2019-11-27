@@ -1,14 +1,15 @@
+fn print_me(msg: &str) { println!("msg = {}", msg); }
+
 fn main() {
-    let hello = "123";
+    let string = "hello world";
+    print_me(string);
 
-    let s = &hello[0..1];
-    //let s = &hello[0..1]; error
-    println!("{}",s);
+    let owned_string = "hello world".to_string(); // or String::from_str("hello world")
+    print_me(&owned_string);
 
-    for b in "我爱你，儿子们！".chars() {
-        println!("{}", b);
-    }
-    for b in "我爱你，儿子们！".bytes() {
-        println!("{}", b);
-    }
+    let counted_string = std::rc::Rc::new("hello world".to_string());
+    print_me(&counted_string);
+
+    let atomically_counted_string = std::sync::Arc::new("hello world".to_string());
+    print_me(&atomically_counted_string);
 }
