@@ -1,15 +1,16 @@
-fn print_me(msg: &str) { println!("msg = {}", msg); }
 
 fn main() {
-    let string = "hello world";
-    print_me(string);
+    let result = calculate("MB","1.99");
+    println!("{}", result)
+}
 
-    let owned_string = "hello world".to_string(); // or String::from_str("hello world")
-    print_me(&owned_string);
-
-    let counted_string = std::rc::Rc::new("hello world".to_string());
-    print_me(&counted_string);
-
-    let atomically_counted_string = std::sync::Arc::new("hello world".to_string());
-    print_me(&atomically_counted_string);
+fn calculate(unit:&str, num:&str) -> f64 {
+    let mut cnum = 0.0;
+    if unit == "MB" {
+        cnum = num.parse::<f64>().unwrap();
+        cnum *= 1024.0;
+    } else if unit == "KB" {
+        cnum = num.parse::<f64>().unwrap();
+    }
+    cnum
 }
